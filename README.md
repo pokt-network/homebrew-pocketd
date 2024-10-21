@@ -34,8 +34,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/i
 To install `poktrolld` using brew, run the following commands:
 
 ```bash
-brew tap pokt-network/poktrolld
-brew install poktroll
+brew tap pokt-network/poktroll
+brew install poktrolld
 ```
 
 And to start pocket core you can simply run:

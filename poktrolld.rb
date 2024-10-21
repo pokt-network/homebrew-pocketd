@@ -2,7 +2,7 @@ class Poktrolld < Formula
   desc "Official implementation of the Pocket Network Shannon Protocol"
   homepage "https://www.pokt.network"
   url "https://github.com/pokt-network/poktroll/archive/refs/tags/v0.0.9-3.tar.gz"
-  sha256 "bb4728c94355d0f9cbfa9aa742f85ab46212d2c13b480c55fb7376674ce73efd"
+  sha256 "93000de9310a24769e6c2fb7755dda9d97520c71bd7d1a812c81006f4736a77f"
   depends_on "go@1.23" => [:build, "1.23"]
 
 
