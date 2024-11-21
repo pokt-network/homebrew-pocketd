@@ -80,7 +80,7 @@ To update the formula, simply run the following command with the new version of 
 For example, to update to version RC-0.12.0:
 
 ```bash
-./update_brew.sh
+make tap_update_version
 ```
 
 ### Testing the Formula locally
@@ -88,13 +88,11 @@ For example, to update to version RC-0.12.0:
 Installing poktrolld:
 
 ```bash
-brew install --build-from-source ./poktrolld.rb
-brew test poktrolld
+make tap_test_install
 ```
 
 Reinstalling poktrolld:
 
 ```bash
-brew reinstall --build-from-source ./poktrolld.rb
-brew test poktrolld
+make tap_test_reinstall
 ```

@@ -134,7 +134,8 @@ for asset_name in "${ASSET_NAMES[@]}"; do
 done
 
 echo "Cleaning up temporary files..."
+# DEV_NOTE: Intentionally not removing the .tar.gz files so they are cached
+# locally (.gitignored) for faster iteration during testing & development
 rm -f *.bak
-# rm -f *.tar.gz *.bak
 
 echo "Formula updated successfully!"
