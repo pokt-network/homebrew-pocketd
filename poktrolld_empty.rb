@@ -11,28 +11,24 @@ class Poktrolld < Formula
   end
 
   on_macos do
-    on_arm do
+    on_intel do  # on_macos_do_not_remove
       url ""
       sha256 ""
     end
-  end
 
-  on_macos do
-    on_intel do
-      url ""
-      sha256 ""
-    end
-  end
-
-  on_linux do
-    on_arm do
+    on_arm do # on_macos_do_not_remove
       url ""
       sha256 ""
     end
   end
 
   on_linux do
-    on_intel do
+    on_intel do # on_linux_do_not_remove
+      url ""
+      sha256 ""
+    end
+
+    on_arm do # on_linux_do_not_remove
       url ""
       sha256 ""
     end

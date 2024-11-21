@@ -54,38 +54,33 @@ update_formula() {
 
     echo "Updating formula for $asset_name on $os/$arch..."
 
-    # Determine the correct pattern for OS and architecture
+    # Determine the correct comment marker for OS and architecture
     if [[ "$os" == "macos" ]]; then
-        os_pattern="on_macos"
+        os_marker="# on_macos_do_not_remove"
     elif [[ "$os" == "linux" ]]; then
-        os_pattern="on_linux"
+        os_marker="# on_linux_do_not_remove"
     else
         echo "Unknown OS: $os"
         exit 1
     fi
 
     if [[ "$arch" == "intel" ]]; then
-        arch_pattern="on_intel"
+        arch_marker="on_intel do"
     elif [[ "$arch" == "arm" ]]; then
-        arch_pattern="on_arm"
+        arch_marker="on_arm do"
     else
         echo "Unknown architecture: $arch"
         exit 1
     fi
 
-    # Use sed to update the URL
-    sed -i.bak -E "/$os_pattern/,/$arch_pattern/ {
-        /url /s#\".*\"#\"https://github.com/$REPO/releases/download/$LATEST_RELEASE/$asset_name\"#
+    # Use sed to update the URL and SHA256 using the markers
+    sed -i.bak -E "/$arch_marker.*$os_marker/{
+        N; # Move to the next line (url line)
+        s#(url \").*#\1$asset_url\"#;
+        N; # Move to the next line (sha256 line)
+        s#(sha256 \").*#\1$sha256\"#;
     }" "$FORMULA_FILE" || {
-        echo "Error updating URL for $os/$arch"
-        exit 1
-    }
-
-    # Use sed to update the SHA256
-    sed -i.bak -E "/$os_pattern/,/$arch_pattern/ {
-        /sha256 /s#\".*\"#\"$sha256\"#
-    }" "$FORMULA_FILE" || {
-        echo "Error updating SHA256 for $os/$arch"
+        echo "Error updating formula for $os/$arch"
         exit 1
     }
 }
@@ -101,13 +96,11 @@ SOURCE_TARBALL_FILE=$(basename "$SOURCE_TARBALL_URL")
 source_sha256=$(fetch_sha256 "$SOURCE_TARBALL_URL")
 
 # Update the formula file
-sed -i.bak -E "/^  url \"/s#\".*\"#\"$SOURCE_TARBALL_URL\"#" "$FORMULA_FILE" || {
-    echo "Error updating top-level url"
-    exit 1
-}
-
-sed -i.bak -E "/^  sha256 \"/s#\".*\"#\"$source_sha256\"#" "$FORMULA_FILE" || {
-    echo "Error updating top-level sha256"
+sed -i.bak -E "
+    s#^(  url \").*#\1$SOURCE_TARBALL_URL\"#
+    s#^(  sha256 \").*#\1$source_sha256\"#
+" "$FORMULA_FILE" || {
+    echo "Error updating top-level url and sha256"
     exit 1
 }
 
