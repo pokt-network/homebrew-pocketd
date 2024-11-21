@@ -52,7 +52,7 @@ update_formula() {
     local os=$3
     local arch=$4
 
-    echo "Updating formula for $os/$arch..."
+    echo "Updating formula for $asset_name on $os/$arch..."
 
     # Determine the correct pattern for OS and architecture
     if [[ "$os" == "macos" ]]; then
@@ -65,26 +65,34 @@ update_formula() {
     fi
 
     if [[ "$arch" == "intel" ]]; then
-        arch_pattern="on_intel"
-    elif [[ "$arch" == "arm" ]]; then
+        # arch_pattern="on_intel"
         arch_pattern="on_arm"
+    elif [[ "$arch" == "arm" ]]; then
+        # arch_pattern="on_arm"
+        arch_pattern="on_intel"
     else
         echo "Unknown architecture: $arch"
         exit 1
     fi
 
-    # Use sed to update the URL and SHA256 within the correct nested blocks
-    sed -i.bak -E "/^\s*$os_pattern\s*do/,/^\s*end\s*$/ {
-        /^\s*$arch_pattern\s*do/,/^\s*end\s*$/ {
-            s#(url\s+\"[^\"]+\")#url \"https://github.com/$REPO/releases/download/$LATEST_RELEASE/$asset_name\"#
-            s#(sha256\s+\"[^\"]+\")#sha256 \"$sha256\"#
-        }
+    echo $os_pattern/$arch_pattern/$asset_name
+
+    # Use sed to update the URL
+    sed -i.bak -E "/$os_pattern/,/$arch_pattern/ {
+        /url /s#\".*\"#\"https://github.com/$REPO/releases/download/$LATEST_RELEASE/$asset_name\"#
     }" "$FORMULA_FILE" || {
-        echo "Error updating formula for $os/$arch"
+        echo "Error updating URL for $os/$arch"
+        exit 1
+    }
+
+    # Use sed to update the SHA256
+    sed -i.bak -E "/$os_pattern/,/$arch_pattern/ {
+        /sha256 /s#\".*\"#\"$sha256\"#
+    }" "$FORMULA_FILE" || {
+        echo "Error updating SHA256 for $os/$arch"
         exit 1
     }
 }
-
 # Process each asset
 for asset_name in "${ASSET_NAMES[@]}"; do
     echo -e "\n ~~ Processing asset: $asset_name ~~"
