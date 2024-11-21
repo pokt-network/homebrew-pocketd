@@ -26,15 +26,15 @@ class Poktrolld < Formula
 
   on_linux do
     on_arm do
-      url "https://github.com/pokt-network/poktroll/releases/download/v0.0.11-rc/poktroll_linux_arm64.tar.gz"
-      sha256 "823a64f9c75dff78210636b956765607c40697ac2668bc95b6eb6eb8067ba1ff"
+      url "https://github.com/pokt-network/poktroll/releases/download/v0.0.11-rc/poktroll_linux_amd64.tar.gz"
+      sha256 "f58710ffcbea837ef01ad9a9dad011a24b0a7483ffd8946fec890b738612c06f"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/pokt-network/poktroll/releases/download/v0.0.11-rc/poktroll_linux_amd64.tar.gz"
-      sha256 "f58710ffcbea837ef01ad9a9dad011a24b0a7483ffd8946fec890b738612c06f"
+      url "https://github.com/pokt-network/poktroll/releases/download/v0.0.11-rc/poktroll_linux_arm64.tar.gz"
+      sha256 "823a64f9c75dff78210636b956765607c40697ac2668bc95b6eb6eb8067ba1ff"
     end
   end
 
