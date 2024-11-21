@@ -5,6 +5,8 @@ A homebrew tap formula for the poktroll binary
 - [Getting Started](#getting-started)
 - [Installation](#installation)
   - [Install Homebrew](#install-homebrew)
+    - [MacOS](#macos)
+    - [Linux](#linux)
   - [Install Poktrolld](#install-poktrolld)
 - [Check Poktrolld](#check-poktrolld)
 - [Homebrew Formula Development](#homebrew-formula-development)
@@ -13,11 +15,15 @@ A homebrew tap formula for the poktroll binary
 
 ## Getting Started
 
-These instructions will get you a copy of `poktroll` on your local machine.
+These instructions will get you a copy of `poktrolld` on your local machine.
 
 ## Installation
 
 ### Install Homebrew
+
+Follow the official instructions [here](https://brew.sh/).
+
+#### MacOS
 
 To install Homebrew on Mac:
 
@@ -25,10 +31,21 @@ To install Homebrew on Mac:
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
+#### Linux
+
 To install Homebrew on Linux:
 
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+```
+
+You might need to run the following commands afterwards:
+
+```bash
+echo >> /home/${USER}/.bashrc
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/${USER}/.bashrc
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+sudo apt-get install build-essential
 ```
 
 ### Install Poktrolld
