@@ -65,17 +65,13 @@ update_formula() {
     fi
 
     if [[ "$arch" == "intel" ]]; then
-        # arch_pattern="on_intel"
-        arch_pattern="on_arm"
-    elif [[ "$arch" == "arm" ]]; then
-        # arch_pattern="on_arm"
         arch_pattern="on_intel"
+    elif [[ "$arch" == "arm" ]]; then
+        arch_pattern="on_arm"
     else
         echo "Unknown architecture: $arch"
         exit 1
     fi
-
-    echo $os_pattern/$arch_pattern/$asset_name
 
     # Use sed to update the URL
     sed -i.bak -E "/$os_pattern/,/$arch_pattern/ {
@@ -93,6 +89,28 @@ update_formula() {
         exit 1
     }
 }
+
+# Update the top-level url and sha256
+echo "Updating top-level url and sha256..."
+
+# Construct source tarball URL
+SOURCE_TARBALL_URL="https://github.com/$REPO/archive/refs/tags/$LATEST_RELEASE.tar.gz"
+SOURCE_TARBALL_FILE=$(basename "$SOURCE_TARBALL_URL")
+
+# Fetch SHA256 for source tarball
+source_sha256=$(fetch_sha256 "$SOURCE_TARBALL_URL")
+
+# Update the formula file
+sed -i.bak -E "/^  url \"/s#\".*\"#\"$SOURCE_TARBALL_URL\"#" "$FORMULA_FILE" || {
+    echo "Error updating top-level url"
+    exit 1
+}
+
+sed -i.bak -E "/^  sha256 \"/s#\".*\"#\"$source_sha256\"#" "$FORMULA_FILE" || {
+    echo "Error updating top-level sha256"
+    exit 1
+}
+
 # Process each asset
 for asset_name in "${ASSET_NAMES[@]}"; do
     echo -e "\n ~~ Processing asset: $asset_name ~~"
@@ -134,8 +152,7 @@ for asset_name in "${ASSET_NAMES[@]}"; do
 done
 
 echo "Cleaning up temporary files..."
-# DEV_NOTE: Intentionally not removing the .tar.gz files so they are cached
-# locally (.gitignored) for faster iteration during testing & development
+# Remove backup files
 rm -f *.bak
 
 echo "Formula updated successfully!"

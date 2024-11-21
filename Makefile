@@ -36,3 +36,8 @@ tap_test_reinstall: ## Test the tap installation after updating the local .rb fi
 	@echo "Testing tap installation..."
 	brew reinstall --build-from-source ./poktrolld.rb
 	@echo "Try running this now: poktrolld version"
+
+.PHONY: tap_reset
+tap_reset: ## DEVS_ONLY: Reset the tap to the latest release
+	@echo "Resetting tap to an empty state..."
+	cp poktrolld_empty.rb poktrolld.rb

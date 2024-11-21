@@ -1,8 +1,8 @@
 class Poktrolld < Formula
   desc "Poktroll - A CLI tool for managing your Pocket Network nodes"
   homepage "https://github.com/pokt-network/poktroll"
-  url "https://github.com/pokt-network/poktroll/archive/refs/tags/v0.0.10.tar.gz" # Replace with your release source tarball URL
-  sha256 "1e9443af2c1bdee2ae70730c647f4440bdcf0173413144b790c7d8e1e1d798cd" # Replace with SHA-256 of the source tarball
+  url "https://github.com/pokt-network/poktroll/archive/refs/tags/v0.0.11-rc.tar.gz"
+  sha256 "30e228a663f429e21dabca99d09fa62b04dc08e65ac39ddbadc67e91496d29a9"
   license "MIT"
 
   livecheck do
@@ -12,15 +12,15 @@ class Poktrolld < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/pokt-network/poktroll/releases/download/v0.0.11-rc/poktroll_darwin_arm64.tar.gz"
-      sha256 "393f53e7cf4ce53229c9ee12b8efd1d5206e574ce625aad3233e05d4443f8e36"
+      url "https://github.com/pokt-network/poktroll/releases/download/v0.0.11-rc/poktroll_darwin_amd64.tar.gz"
+      sha256 "9d7abaf8c5ca87430c634c02153520c54dec0496aac590ff32b182446359a0cd"
     end
   end
 
   on_macos do
     on_intel do
-      url "https://github.com/pokt-network/poktroll/releases/download/v0.0.11-rc/poktroll_darwin_amd64.tar.gz"
-      sha256 "9d7abaf8c5ca87430c634c02153520c54dec0496aac590ff32b182446359a0cd"
+      url "https://github.com/pokt-network/poktroll/releases/download/v0.0.11-rc/poktroll_darwin_arm64.tar.gz"
+      sha256 "393f53e7cf4ce53229c9ee12b8efd1d5206e574ce625aad3233e05d4443f8e36"
     end
   end
 
@@ -39,10 +39,12 @@ class Poktrolld < Formula
   end
 
   def install
-    bin.install "poktrolld" # Ensure that the binary name matches the extracted file
+    # Ensure that the binary name matches the extracted file
+    bin.install "poktrolld"
   end
 
   test do
-    system "#{bin}/poktrolld", "version" # Replace with an actual test command
+    # Replace with an actual test command
+    system "#{bin}/poktrolld", "version"
   end
 end
