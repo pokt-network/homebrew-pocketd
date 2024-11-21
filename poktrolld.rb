@@ -1,34 +1,48 @@
 class Poktrolld < Formula
-  desc "Official implementation of the Pocket Network Shannon Protocol"
-  homepage "https://www.pokt.network"
-  # https://github.com/pokt-network/poktroll/releases
-  url "https://github.com/pokt-network/poktroll/archive/refs/tags/v0.0.9-3.tar.gz"
-  sha256 "93000de9310a24769e6c2fb7755dda9d97520c71bd7d1a812c81006f4736a77f"
-  depends_on "go@1.23" => [:build, "1.23"]
+  desc "Poktroll - A CLI tool for managing your Pocket Network nodes"
+  homepage "https://github.com/pokt-network/poktroll"
+  url "https://github.com/pokt-network/poktroll/archive/refs/tags/v0.0.10.tar.gz" # Replace with your release source tarball URL
+  sha256 "1e9443af2c1bdee2ae70730c647f4440bdcf0173413144b790c7d8e1e1d798cd" # Replace with SHA-256 of the source tarball
+  license "MIT"
 
+  livecheck do
+    url :stable
+    strategy :github_latest
+  end
 
-  # TODO(@olshansk): Some links to keep going
-  # - Mac permissions: https://stackoverflow.com/questions/60112375/apple-cannot-check-it-for-malicious-software-in-every-installation
-  # - Releases: https://github.com/pokt-network/poktroll/releases
-  # - Installing pre-built binary: https://github.com/orgs/Homebrew/discussions/2790
+  on_macos do
+    on_intel do
+      url "https://github.com/pokt-network/poktroll/releases/download/v0.0.11-rc/poktroll_darwin_arm64.tar.gz"
+      sha256 "393f53e7cf4ce53229c9ee12b8efd1d5206e574ce625aad3233e05d4443f8e36"
+    end
+  end
+
+  on_macos do
+    on_arm do
+      url "https://github.com/pokt-network/poktroll/releases/download/v0.0.11-rc/poktroll_darwin_amd64.tar.gz"
+      sha256 "9d7abaf8c5ca87430c634c02153520c54dec0496aac590ff32b182446359a0cd"
+    end
+  end
+
+  on_linux do
+    on_intel do
+      url "https://github.com/pokt-network/poktroll/releases/download/v0.0.11-rc/poktroll_linux_arm64.tar.gz"
+      sha256 "823a64f9c75dff78210636b956765607c40697ac2668bc95b6eb6eb8067ba1ff"
+    end
+  end
+
+  on_linux do
+    on_arm do
+      url "https://github.com/pokt-network/poktroll/releases/download/v0.0.11-rc/poktroll_linux_amd64.tar.gz"
+      sha256 "f58710ffcbea837ef01ad9a9dad011a24b0a7483ffd8946fec890b738612c06f"
+    end
+  end
 
   def install
-    make ignite_install
-    make ignite_poktrolld_build
-    # ENV["GOPATH"] = buildpath
-    # bin_path = buildpath/"src/github.com/pokt-network/pocket-core"
-    # Copy all files from their current location (GOPATH root)
-    # to $GOPATH/src/github.com/pokt-network/pocket-core
-    # bin_path.install Dir["*"]
-    # cd bin_path do
-      # Install the compiled binary into Homebrew's `bin` - a pre-existing
-      # global variable
-    #   system "go", "mod", "vendor"
-    #   system "go", "build", "-tags", "cleveldb", "-o", bin/"pocket", "./app/cmd/pocket_core/main.go"
-    # end
+    bin.install "poktrolld" # Ensure that the binary name matches the extracted file
   end
 
   test do
-    shell_output("#{bin}/poktrolld", "help")
+    system "#{bin}/poktrolld", "version" # Replace with an actual test command
   end
 end

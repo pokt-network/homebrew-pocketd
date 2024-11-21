@@ -4,10 +4,12 @@ A homebrew tap formula for the poktroll binary
 
 - [Getting Started](#getting-started)
 - [Installation](#installation)
-  - [Homebrew](#homebrew)
-  - [Poktrolld](#poktrolld)
-- [Development](#development)
+  - [Install Homebrew](#install-homebrew)
+  - [Install Poktrolld](#install-poktrolld)
+- [Check Poktrolld](#check-poktrolld)
+- [Homebrew Formula Development](#homebrew-formula-development)
   - [Update Formula](#update-formula)
+  - [Testing the Formula locally](#testing-the-formula-locally)
 
 ## Getting Started
 
@@ -15,7 +17,7 @@ These instructions will get you a copy of `poktroll` on your local machine.
 
 ## Installation
 
-### Homebrew
+### Install Homebrew
 
 To install Homebrew on Mac:
 
@@ -29,7 +31,7 @@ To install Homebrew on Linux:
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 ```
 
-### Poktrolld
+### Install Poktrolld
 
 To install `poktrolld` using brew, run the following commands:
 
@@ -38,15 +40,21 @@ brew tap pokt-network/poktroll
 brew install poktrolld
 ```
 
-And to start pocket core you can simply run:
+## Check Poktrolld
+
+Make sure that the installation was successful by running the following command:
 
 ```bash
-poktrolld start
+poktrolld --help
 ```
 
-If everything works, a terminal prompt asking for a coinbase passphrase should appear.
+You can check the latest version by running:
 
-## Development
+```bash
+poktrolld version
+```
+
+## Homebrew Formula Development
 
 ### Update Formula
 
@@ -55,5 +63,12 @@ To update the formula, simply run the following command with the new version of 
 For example, to update to version RC-0.12.0:
 
 ```bash
-./update_brew.sh RC-0.12.0
+./update_brew.sh
+```
+
+### Testing the Formula locally
+
+```bash
+brew install --build-from-source ./poktrolld.rb
+brew test poktrolld
 ```
