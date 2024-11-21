@@ -9,6 +9,8 @@ A homebrew tap formula for the poktroll binary
     - [Linux](#linux)
   - [Install Poktrolld](#install-poktrolld)
 - [Check Poktrolld](#check-poktrolld)
+- [Troubleshooting](#troubleshooting)
+  - [Am I using the brew installed verion of poktrolld?](#am-i-using-the-brew-installed-verion-of-poktrolld)
 - [Homebrew Formula Development](#homebrew-formula-development)
   - [Update Formula](#update-formula)
   - [Testing the Formula locally](#testing-the-formula-locally)
@@ -69,6 +71,30 @@ You can check the latest version by running:
 
 ```bash
 poktrolld version
+```
+
+## Troubleshooting
+
+### Am I using the brew installed verion of poktrolld?
+
+You can check which binary you're using by one of the following commands:
+
+On macOS, we expect something similar to the following:
+
+```bash
+whereis poktrolld
+# /opt/homebrew/bin/poktrolld
+which poktrolld
+# poktrolld: /opt/homebrew/bin/poktrolld
+```
+
+On Linux, we expect something similar to the following:
+
+```bash
+whereis poktrolld
+# poktrolld: /home/linuxbrew/.linuxbrew/bin/poktrolld
+which poktrolld
+# /home/linuxbrew/.linuxbrew/bin/poktrolld
 ```
 
 ## Homebrew Formula Development
