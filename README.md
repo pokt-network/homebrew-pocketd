@@ -85,7 +85,16 @@ For example, to update to version RC-0.12.0:
 
 ### Testing the Formula locally
 
+Installing poktrolld:
+
 ```bash
 brew install --build-from-source ./poktrolld.rb
+brew test poktrolld
+```
+
+Reinstalling poktrolld:
+
+```bash
+brew reinstall --build-from-source ./poktrolld.rb
 brew test poktrolld
 ```

@@ -12,15 +12,15 @@ class Poktrolld < Formula
 
   on_macos do
     on_intel do
-      url "https://github.com/pokt-network/poktroll/releases/download/v0.0.11-rc/poktroll_darwin_amd64.tar.gz"
-      sha256 "9d7abaf8c5ca87430c634c02153520c54dec0496aac590ff32b182446359a0cd"
+      url "https://github.com/pokt-network/poktroll/releases/download/v0.0.11-rc/poktroll_darwin_arm64.tar.gz"
+      sha256 "393f53e7cf4ce53229c9ee12b8efd1d5206e574ce625aad3233e05d4443f8e36"
     end
   end
 
   on_macos do
     on_arm do
-      url "https://github.com/pokt-network/poktroll/releases/download/v0.0.11-rc/poktroll_darwin_arm64.tar.gz"
-      sha256 "393f53e7cf4ce53229c9ee12b8efd1d5206e574ce625aad3233e05d4443f8e36"
+      url "https://github.com/pokt-network/poktroll/releases/download/v0.0.11-rc/poktroll_darwin_amd64.tar.gz"
+      sha256 "9d7abaf8c5ca87430c634c02153520c54dec0496aac590ff32b182446359a0cd"
     end
   end
 
