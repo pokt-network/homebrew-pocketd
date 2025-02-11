@@ -26,3 +26,4 @@ go.work.sum
 
 # Downloaded files
 *.tar.gz
+release_checksum

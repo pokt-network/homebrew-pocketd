@@ -16,33 +16,28 @@ fi
 
 echo "Latest release tag: $LATEST_RELEASE"
 
-# Function to fetch SHA256 checksum
+# Download release_checksum file
+echo "Downloading release_checksum file..."
+curl -L -s -o "release_checksum" "https://github.com/$REPO/releases/download/$LATEST_RELEASE/release_checksum" || {
+    echo "Failed to download release_checksum file"
+    exit 1
+}
+
+# Function to fetch SHA256 checksum from release_checksum file
 fetch_sha256() {
-    local url=$1
-    local file_name=$(basename "$url")
+    local file_name=$1
+    local checksum
 
-    echo "Fetching SHA256 for $url..." >&2
+    # Extract checksum for the specific file
+    checksum=$(grep "$file_name" release_checksum | awk '{print $1}')
 
-    # Check if file already exists
-    if [[ -f "$file_name" ]]; then
-        echo "$file_name already exists. Skipping download..." >&2
-    else
-        echo "Downloading $file_name..." >&2
-        curl -L -s -o "$file_name" "$url" || {
-            echo "Failed to download $file_name" >&2
-            exit 1
-        }
+    if [[ -z "$checksum" ]]; then
+        echo "Checksum not found for $file_name in release_checksum file" >&2
+        exit 1
     fi
 
-    # Calculate SHA256
-    echo "Calculating SHA256 for $file_name..." >&2
-    local checksum
-    checksum=$(shasum -a 256 "$file_name" | awk '{print $1}')
-
-    # Print the calculated checksum for debugging
     echo "SHA256 for $file_name: $checksum" >&2
-
-    echo "$checksum" # Return the checksum
+    echo "$checksum"
 }
 
 # Update the formula file
@@ -92,8 +87,14 @@ echo "Updating top-level url and sha256..."
 SOURCE_TARBALL_URL="https://github.com/$REPO/archive/refs/tags/$LATEST_RELEASE.tar.gz"
 SOURCE_TARBALL_FILE=$(basename "$SOURCE_TARBALL_URL")
 
-# Fetch SHA256 for source tarball
-source_sha256=$(fetch_sha256 "$SOURCE_TARBALL_URL")
+# Download and compute SHA256 for source tarball only
+echo "Downloading source tarball and computing its SHA256..."
+curl -L -s -o "$SOURCE_TARBALL_FILE" "$SOURCE_TARBALL_URL" || {
+    echo "Failed to download source tarball"
+    exit 1
+}
+source_sha256=$(shasum -a 256 "$SOURCE_TARBALL_FILE" | awk '{print $1}')
+rm -f "$SOURCE_TARBALL_FILE" # Clean up the downloaded file
 
 # Update the formula file
 sed -i.bak -E "
@@ -111,8 +112,8 @@ for asset_name in "${ASSET_NAMES[@]}"; do
     # Construct download URL
     asset_url="https://github.com/$REPO/releases/download/$LATEST_RELEASE/$asset_name"
 
-    # Fetch SHA256
-    sha256=$(fetch_sha256 "$asset_url")
+    # Fetch SHA256 from release_checksum file
+    sha256=$(fetch_sha256 "$asset_name")
 
     # Determine OS and Architecture
     case "$asset_name" in
