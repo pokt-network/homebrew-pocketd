@@ -13,24 +13,24 @@ class Poktrolld < Formula
   on_macos do
     on_intel do  # on_macos_do_not_remove
       url "https://github.com/pokt-network/poktroll/releases/download/v0.0.12/poktroll_darwin_amd64.tar.gz"
-      sha256 "9d7abaf8c5ca87430c634c02153520c54dec0496aac590ff32b182446359a0cd"
+      sha256 "4c238a0fead59f7fb717ed5b5cafc1eaab0495eb0e496009987dd9dcaf1d3b6c"
     end
 
     on_arm do # on_macos_do_not_remove
       url "https://github.com/pokt-network/poktroll/releases/download/v0.0.12/poktroll_darwin_arm64.tar.gz"
-      sha256 "393f53e7cf4ce53229c9ee12b8efd1d5206e574ce625aad3233e05d4443f8e36"
+      sha256 "8ae43768fc16274cdbad46457345accef6f1671e2ebc05df2871153dfa7cc918"
     end
   end
 
   on_linux do
     on_intel do # on_linux_do_not_remove
       url "https://github.com/pokt-network/poktroll/releases/download/v0.0.12/poktroll_linux_amd64.tar.gz"
-      sha256 "f58710ffcbea837ef01ad9a9dad011a24b0a7483ffd8946fec890b738612c06f"
+      sha256 "9fe01fe64a272f642ca20e265a131f51609c8f556690219e5ee8a869d43562b5"
     end
 
     on_arm do # on_linux_do_not_remove
       url "https://github.com/pokt-network/poktroll/releases/download/v0.0.12/poktroll_linux_arm64.tar.gz"
-      sha256 "823a64f9c75dff78210636b956765607c40697ac2668bc95b6eb6eb8067ba1ff"
+      sha256 "b3231f1c752d26b97dab04607741b98229a48506d6195e699170d3ad55e1554f"
     end
   end
 
