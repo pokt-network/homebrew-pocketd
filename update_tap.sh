@@ -3,9 +3,9 @@
 set -e
 
 # Configuration
-REPO="pokt-network/poktroll" # GitHub repo in the format owner/repo
-FORMULA_FILE="poktrolld.rb"  # Homebrew formula file name
-ASSET_NAMES=("poktroll_darwin_amd64.tar.gz" "poktroll_darwin_arm64.tar.gz" "poktroll_linux_amd64.tar.gz" "poktroll_linux_arm64.tar.gz")
+REPO="pokt-network/pocket" # GitHub repo in the format owner/repo
+FORMULA_FILE="pocketd.rb"  # Homebrew formula file name
+ASSET_NAMES=("pocket_darwin_amd64.tar.gz" "pocket_darwin_arm64.tar.gz" "pocket_linux_amd64.tar.gz" "pocket_linux_arm64.tar.gz")
 
 # Get the latest release tag from GitHub API
 LATEST_RELEASE=$(curl -s "https://api.github.com/repos/$REPO/releases/latest" | jq -r '.tag_name')

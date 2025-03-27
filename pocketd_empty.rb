@@ -1,6 +1,6 @@
-class Poktrolld < Formula
-  desc "Poktroll - A CLI tool for managing your Pocket Network nodes"
-  homepage "https://github.com/pokt-network/poktroll"
+class Pocketd < Formula
+  desc "Pocket - A CLI tool for managing your Pocket Network nodes"
+  homepage "https://github.com/pokt-network/pocket"
   url ""
   sha256 ""
   license "MIT"
@@ -36,11 +36,11 @@ class Poktrolld < Formula
 
   def install
     # Ensure that the binary name matches the extracted file
-    bin.install "poktrolld"
+    bin.install "pocketd"
   end
 
   test do
     # Replace with an actual test command
-    system "#{bin}/poktrolld", "version"
+    system "#{bin}/pocketd", "version"
   end
 end

@@ -1,23 +1,21 @@
-# homebrew-poktroll <!-- omit in toc -->
+# homebrew-pocket <!-- omit in toc -->
 
-A homebrew tap formula for the poktroll binary
+A homebrew tap formula for the pocket binary
 
 - [Getting Started](#getting-started)
 - [Installation](#installation)
-  - [Install Homebrew](#install-homebrew)
-    - [MacOS](#macos)
-    - [Linux](#linux)
-  - [Install Poktrolld](#install-poktrolld)
-- [Check Poktrolld](#check-poktrolld)
+  - [Install Homebrew](#install-homebrew) - [MacOS](#macos) - [Linux](#linux)
+    [Install Pocketd](#install-pocketd)
+    [Check Pocketd](#check-pocketd)
 - [Troubleshooting](#troubleshooting)
-  - [Am I using the brew installed verion of poktrolld?](#am-i-using-the-brew-installed-verion-of-poktrolld)
+  - [Am I using the brew installed verion of pocketd?](#am-i-using-the-brew-installed-verion-of-pocketd)
 - [Homebrew Formula Development](#homebrew-formula-development)
   - [Update Formula](#update-formula)
   - [Testing the Formula locally](#testing-the-formula-locally)
 
 ## Getting Started
 
-These instructions will get you a copy of `poktrolld` on your local machine.
+These instructions will get you a copy of `pocketd` on your local machine.
 
 ## Installation
 
@@ -50,51 +48,51 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 sudo apt-get install build-essential
 ```
 
-### Install Poktrolld
+### Install Pocketd
 
-To install `poktrolld` using brew, run the following commands:
+To install `pocketd` using brew, run the following commands:
 
 ```bash
-brew tap pokt-network/poktroll
-brew install poktrolld
+brew tap pokt-network/pocket
+brew install pocketd
 ```
 
-## Check Poktrolld
+## Check Pocketd
 
 Make sure that the installation was successful by running the following command:
 
 ```bash
-poktrolld --help
+pocketd --help
 ```
 
 You can check the latest version by running:
 
 ```bash
-poktrolld version
+pocketd version
 ```
 
 ## Troubleshooting
 
-### Am I using the brew installed verion of poktrolld?
+### Am I using the brew installed verion of pocketd?
 
 You can check which binary you're using by one of the following commands:
 
 On macOS, we expect something similar to the following:
 
 ```bash
-whereis poktrolld
-# /opt/homebrew/bin/poktrolld
-which poktrolld
-# poktrolld: /opt/homebrew/bin/poktrolld
+whereis pocketd
+# /opt/homebrew/bin/pocketd
+which pocketd
+# pocketd: /opt/homebrew/bin/pocketd
 ```
 
 On Linux, we expect something similar to the following:
 
 ```bash
-whereis poktrolld
-# poktrolld: /home/linuxbrew/.linuxbrew/bin/poktrolld
-which poktrolld
-# /home/linuxbrew/.linuxbrew/bin/poktrolld
+whereis pocketd
+# pocketd: /home/linuxbrew/.linuxbrew/bin/pocketd
+which pocketd
+# /home/linuxbrew/.linuxbrew/bin/pocketd
 ```
 
 ## Homebrew Formula Development
@@ -111,13 +109,13 @@ make tap_update_version
 
 ### Testing the Formula locally
 
-Installing poktrolld:
+Installing pocketd:
 
 ```bash
 make tap_test_install
 ```
 
-Reinstalling poktrolld:
+Reinstalling pocketd:
 
 ```bash
 make tap_test_reinstall
