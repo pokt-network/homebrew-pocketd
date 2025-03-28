@@ -1,6 +1,6 @@
 class Pocketd < Formula
   desc "Pocket - A CLI tool for managing your Pocket Network nodes"
-  homepage "https://github.com/pokt-network/pocket"
+  homepage "https://github.com/pokt-network/poktroll"
   url ""
   sha256 ""
   license "MIT"

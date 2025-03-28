@@ -4,9 +4,11 @@ A homebrew tap formula for the pocket binary
 
 - [Getting Started](#getting-started)
 - [Installation](#installation)
-  - [Install Homebrew](#install-homebrew) - [MacOS](#macos) - [Linux](#linux)
-    [Install Pocketd](#install-pocketd)
-    [Check Pocketd](#check-pocketd)
+  - [Install Homebrew](#install-homebrew)
+    - [MacOS](#macos)
+    - [Linux](#linux)
+  - [Install Pocketd](#install-pocketd)
+- [Check Pocketd](#check-pocketd)
 - [Troubleshooting](#troubleshooting)
   - [Am I using the brew installed verion of pocketd?](#am-i-using-the-brew-installed-verion-of-pocketd)
 - [Homebrew Formula Development](#homebrew-formula-development)
@@ -53,7 +55,7 @@ sudo apt-get install build-essential
 To install `pocketd` using brew, run the following commands:
 
 ```bash
-brew tap pokt-network/pocket
+brew tap pokt-network/poktroll
 brew install pocketd
 ```
 
