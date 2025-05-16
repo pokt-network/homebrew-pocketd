@@ -28,13 +28,13 @@ tap_update_version: ## Update the tap versions using the releases at https://git
 .PHONY: tap_test_install
 tap_test_install: ## Test the tap installation after updating the local .rb file
 	@echo "Testing tap installation..."
-	brew install --build-from-source ./pocketd.rb
+	brew install --formula --build-from-source ./pocketd.rb
 	@echo "Try running this now: pocketd version"
 
 .PHONY: tap_test_reinstall
 tap_test_reinstall: ## Test the tap installation after updating the local .rb file
 	@echo "Testing tap installation..."
-	brew reinstall --build-from-source ./pocketd.rb
+	brew reinstall --formula --build-from-source ./pocketd.rb
 	@echo "Try running this now: pocketd version"
 
 .PHONY: tap_reset
