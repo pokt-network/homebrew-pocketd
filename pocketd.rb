@@ -1,8 +1,8 @@
 class Pocketd < Formula
   desc "Pocket - A CLI tool for managing your Pocket Network nodes"
   homepage "https://github.com/pokt-network/poktroll"
-  url "https://github.com/pokt-network/poktroll/archive/refs/tags/v0.1.35.tar.gz"
-  sha256 "c3cdd12a7bc829977e2762258d7e28c5ecbab299750f6713523ce66c397b840a"
+  url "https://github.com/pokt-network/poktroll/archive/refs/tags/v0.1.36.tar.gz"
+  sha256 "821c3b8d749b4b9fa5c78bccd2aa081b83df4ee21c8f45a7c8b72ee6bb3c81a8"
   license "MIT"
 
   livecheck do
@@ -12,25 +12,25 @@ class Pocketd < Formula
 
   on_macos do
     on_intel do  # on_macos_do_not_remove
-      url "https://github.com/pokt-network/poktroll/releases/download/v0.1.35/pocket_darwin_amd64.tar.gz"
-      sha256 "e1f03ed45b892109924dab56423d29e443ab72ee018e3165a2453d8a55aa5317"
+      url "https://github.com/pokt-network/poktroll/releases/download/v0.1.36/pocket_darwin_amd64.tar.gz"
+      sha256 "28f2bd54debbd34b5495a6751f2320cbe61785d5bc4c05d563e439d1284ed344"
     end
 
     on_arm do # on_macos_do_not_remove
-      url "https://github.com/pokt-network/poktroll/releases/download/v0.1.35/pocket_darwin_arm64.tar.gz"
-      sha256 "aa17f136079a708d8412521e9fc5538aec0267a1a721213f9b5e34e31be0aee3"
+      url "https://github.com/pokt-network/poktroll/releases/download/v0.1.36/pocket_darwin_arm64.tar.gz"
+      sha256 "00e1e3ea529577b3f7a24236e975f4a271ef0b3f209dca0a3f94232669bc843b"
     end
   end
 
   on_linux do
     on_intel do # on_linux_do_not_remove
-      url "https://github.com/pokt-network/poktroll/releases/download/v0.1.35/pocket_linux_amd64.tar.gz"
-      sha256 "99b88aa839a19d6b89b4923cadbc5848ba161a828e514ea9751dffd569066a3b"
+      url "https://github.com/pokt-network/poktroll/releases/download/v0.1.36/pocket_linux_amd64.tar.gz"
+      sha256 "4aae8436f25936dc79212a3f3b6079aafaaaba57edde09809a70aecd68e00eb7"
     end
 
     on_arm do # on_linux_do_not_remove
-      url "https://github.com/pokt-network/poktroll/releases/download/v0.1.35/pocket_linux_arm64.tar.gz"
-      sha256 "9a13cbf008a3e20a5cbb1daef588b253ec027c07d9c7252e5854c44d8d11abc9"
+      url "https://github.com/pokt-network/poktroll/releases/download/v0.1.36/pocket_linux_arm64.tar.gz"
+      sha256 "5d73fe7f3f6d39f77a9861cb2c83d79ffe0fc86233e43e289fdcd09d62583fdf"
     end
   end
 
